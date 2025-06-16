@@ -11,7 +11,7 @@ public class SocketGridSpawner : MonoBehaviour
     public float spacing = 0.02f;
     public Vector3 boardOffset = Vector3.zero;
 
-    void Start()
+    private void Start()
     {
         SpawnAndResizeSockets();
     }
