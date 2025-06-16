@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -6,11 +7,13 @@ public class NumPuzzle : MonoBehaviour
     public XRSocketInteractor[] sockets;
     [SerializeField] GameObject[] attachedPlates = new GameObject[5];
 
+    public TextMeshProUGUI resultText;
+
     private void Awake()
     {
         for (int i = 0; i < sockets.Length; i++)
         {
-            int index = i; // 람다 캡처용 지역변수
+            int index = i;
             sockets[i].selectEntered.AddListener(args => OnPlateInserted(index, args));
             sockets[i].selectExited.AddListener(args => OnPlateRemoved(index, args));
         }
@@ -25,7 +28,8 @@ public class NumPuzzle : MonoBehaviour
     private void OnPlateRemoved(int index, SelectExitEventArgs args)
     {
         attachedPlates[index] = null;
-        // 오답/리셋 로직 추가 예정
+        // 소켓이 비면 결과 지움
+        resultText.text = "";
     }
 
     private void TryCheckAnswer()
@@ -33,6 +37,7 @@ public class NumPuzzle : MonoBehaviour
         // 5개 모두 들어갔는지 확인
         foreach (var plate in attachedPlates)
         {
+            resultText.text = "";
             if (plate == null) return;
         }
 
@@ -55,11 +60,11 @@ public class NumPuzzle : MonoBehaviour
         int answer = pv0.numberValue + pv2.numberValue;
         if (answer == pv4.numberValue)
         {
-            Debug.Log("정답");
+            resultText.text = "<color=lime>정답!</color>";
         }
         else
         {
-            Debug.Log("오답");
+            resultText.text = "<color=red>오답!</color>";
         }
     }
 }
