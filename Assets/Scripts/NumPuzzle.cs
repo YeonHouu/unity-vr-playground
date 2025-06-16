@@ -60,7 +60,7 @@ public class NumPuzzle : MonoBehaviour
         int answer = pv0.numberValue + pv2.numberValue;
         if (answer == pv4.numberValue)
         {
-            resultText.text = "<color=lime>정답!</color>";
+            resultText.text = "<color=Green>정답!</color>";
         }
         else
         {
