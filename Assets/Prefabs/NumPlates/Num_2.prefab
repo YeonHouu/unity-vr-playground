@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plateType: 0
   numberValue: 2
-  symbolValue: 0
+  symbolValue: 50
 --- !u!1 &7150115944862026173
 GameObject:
   m_ObjectHideFlags: 0
