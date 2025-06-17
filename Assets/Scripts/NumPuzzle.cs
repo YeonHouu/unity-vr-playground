@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -5,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class NumPuzzle : MonoBehaviour
 {
     public XRSocketInteractor[] sockets;
-    [SerializeField] GameObject[] attachedPlates = new GameObject[5];
+    [SerializeField] GameObject[] attachedPlates = new GameObject[6];
 
     public TextMeshProUGUI resultText;
 
@@ -60,7 +61,7 @@ public class NumPuzzle : MonoBehaviour
         int answer = pv0.numberValue + pv2.numberValue;
         if (answer == pv4.numberValue)
         {
-            resultText.text = "<color=Green>정답!</color>";
+            resultText.text = "<color=green>정답!</color>";
         }
         else
         {
